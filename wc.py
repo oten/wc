@@ -28,7 +28,7 @@ def home(url: hug.types.text, word: hug.types.text,):
         return err_msg
 
     html = response.content.decode('unicode_escape')
-    
+
     handler = html2text.HTML2Text()
     text = handler.handle(html)
 
