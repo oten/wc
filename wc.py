@@ -2,6 +2,7 @@
 import hug
 import requests
 import string
+import html2text
 
 
 def wc(text, word):
@@ -26,6 +27,9 @@ def home(url: hug.types.text, word: hug.types.text,):
     if not response.ok:
         return err_msg
 
-    text = response.content.decode('unicode_escape')
+    html = response.content.decode('unicode_escape')
+    
+    handler = html2text.HTML2Text()
+    text = handler.handle(html)
 
-    return {'wc': wc(text, word)}
+    return wc(text, word)

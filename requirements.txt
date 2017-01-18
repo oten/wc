@@ -1,4 +1,5 @@
 falcon==1.0.0
+html2text==2016.9.19
 hug==2.2.0
 pkg-resources==0.0.0
 python-mimeparse==1.6.0
