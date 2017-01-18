@@ -32,4 +32,4 @@ def home(url: hug.types.text, word: hug.types.text,):
     handler = html2text.HTML2Text()
     text = handler.handle(html)
 
-    return wc(text, word)
+    return {'count': wc(text, word)}
