@@ -12,20 +12,20 @@ def wc(text, word):
 
 
 @hug.get('/')
-def home(url:hug.types.text, word:hug.types.text,):
+def home(url: hug.types.text, word: hug.types.text,):
     """Gets a URL and a word and return the word count in text from URL"""
+
+    err_msg = {'code': 801,
+               'message': "Can't retrieve '{}' resource.".format(url)}
 
     try:
         response = requests.get(url)
     except:
-        return {'code':801, 'message': "Can't retrieve '{}' resource.".format(url)}
+        return err_msg
 
     if not response.ok:
-        return {'code':801, 'message': "Can't retrieve '{}' resource.".format(url)}
+        return err_msg
 
     text = response.content.decode('unicode_escape')
 
     return {'wc': wc(text, word)}
-
-
-
