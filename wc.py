@@ -30,6 +30,7 @@ def home(url: hug.types.text, word: hug.types.text,):
     html = response.content.decode('unicode_escape')
 
     handler = html2text.HTML2Text()
+    handler.ignore_images, handler.ignore_links = True, True
     text = handler.handle(html)
 
     return {'count': wc(text, word)}
